@@ -69,10 +69,3 @@ print(nums3)
 print(nums4)
 
 print(type(nums))
-
-# tuple 
-mytuple = tuple(('my', 2, True))
-print(type(mytuple))
-
-another_tuple = (91, 5 ,9)
-print(type(another_tuple))

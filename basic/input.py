@@ -5,7 +5,7 @@ title = "Enter...\n 1 for Rock,\n 2 for Paper,\n 3 for Scissors\n\n"
 print(title)
 
 user_input = input("Enter your choice: ")
-player = int(user_input);
+player = int(user_input)
 if player < 1 or player > 3:
     sys.exit("Invalid input. You must select 1, 2, or 3.")
 
