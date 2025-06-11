@@ -1,2 +1,4 @@
 .venv
 /oop/ENV_DIR
+.vscode
+**/*/__pycache__
