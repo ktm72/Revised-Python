@@ -16,11 +16,13 @@ def build_hierarchy(df):
       hierarchy.append(category)
     else:
       # Split into prefix (dashes) and subcategory
+      # print(f"split category",category.split('-->'))
       prefix, subcategory = category.split('-->', 1)
       subcategory = subcategory.strip()
       
       # Level = number of '--' before '-->' + 1
       level = prefix.count('--') + 1  # '-->' = level 1, '-- -->' = level 2, etc.
+      # print(f"Processing: {subcategory} at level {level}")
       
       # Parent is at (level - 1)
       parent_level = level - 1
@@ -42,7 +44,23 @@ def build_hierarchy(df):
   df['Hierarchy'] = hierarchy
   return df
 
-#  To process CSV:
+# data = {
+#     'Category': [
+#         'Cats',
+#         '--> Cat Food',      # Level 1 (sub of Cats)
+#         '-- --> Canned',     # Level 2 (sub of Cat Food)
+#         '-- -- --> Fromm',   # Level 3 (sub of Canned)
+#         '-- -- --> Nulo',    # Level 3 (sub of Canned)
+#         'Dogs',              # Level 0 (top)
+#         'Calming',           # Level 0 (top)
+#         '--> Nulo',          # Level 1 (sub of Calming)
+#     ]
+# }
+# df = pd.DataFrame(data)
+# result = build_hierarchy(df)
+# print(result)
+
+# #  To process CSV:
 df = pd.read_csv('input.csv')
 result = build_hierarchy(df)
 result.to_csv('output.csv', index=False)
